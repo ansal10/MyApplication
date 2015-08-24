@@ -14,36 +14,37 @@
         android:singleLine="true"
         android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/destinatonStationCode"
         android:hint="Destination"
-        android:layout_below="@+id/sourceStationCode"
-        android:layout_centerHorizontal="true"
         android:singleLine="true"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/sourceStationCode" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/dayCode"
-        android:hint="Day (dd-mm-yyyy)"
+        android:hint="dd-mm-yyyy"
         android:singleLine="true"
         android:gravity="center"
-        android:layout_below="@+id/destinatonStationCode"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/destinatonStationCode" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/search"
         android:id="@+id/searchTrainBetweenStaions"
-        android:layout_below="@+id/dayCode"
-        android:layout_centerHorizontal="true"
-        android:onClick="searchTrainBetweenStations" />
+        android:onClick="searchTrainBetweenStations"
+        android:layout_alignBottom="@+id/dayCode"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/dayCode" />
 
     <ScrollView
         android:layout_width="match_parent"
