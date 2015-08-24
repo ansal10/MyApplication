@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context="com.example.amd.myapplication.TrainBetweenStations"
-    android:id="@+id/relativeView1" >
+    android:id="@+id/relativeView1"
+    android:background="#ff7477">
 
     <EditText
         android:layout_width="wrap_content"
@@ -46,14 +47,37 @@
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/dayCode" />
 
+    <Spinner
+        android:id="@+id/classSelectView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/country_arrays"
+        android:prompt="@string/country_prompt"
+        android:visibility="visible"
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/sourceStationCode"
+        android:layout_toStartOf="@+id/dayCode" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchTrainBetweenStaions">
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/allTrainAvailiblity">
         <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical" >
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get All Availiblity"
+        android:id="@+id/allTrainAvailiblity"
+        android:layout_below="@+id/destinatonStationCode"
+        android:layout_toEndOf="@+id/destinatonStationCode"
+        android:onClick="allTrainAvailiblity" />
+
 
 </RelativeLayout>

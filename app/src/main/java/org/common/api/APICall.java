@@ -104,11 +104,11 @@ public class APICall {
         String response = HTTPCall(url);
         int times=5;
 
-        while(times>=0 && response.contains("\"error\": true")){
-            response = HTTPCall(url);
-            times--;
-        }
-        System.out.println("Tried "+(5-times)+" times");
+//        while(times>=0 && response.contains("\"error\": true")){
+//            response = HTTPCall(url);
+//            times--;
+//        }
+//        System.out.println("Tried "+(5-times)+" times");
         Gson gson =new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();

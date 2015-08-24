@@ -22,28 +22,28 @@ public class APICallTest extends TestCase {
 //
 //    APICall apiCall = new APICall();
 //
-//    @Test
-//    public void testSeatAvailiblity(){
-//        String src="BPL";
-//        String dest="NDLS";
-//        String date="22-10-2015";
-//        String classs="CC";
-//        String quota="GN";
-//        String train="12001";
-//
-//        List<Availiblity> availiblities = apiCall.getAvailiblity(train,src,dest,date,classs,quota);
-//
-//        assertTrue((availiblities != null && availiblities.size() > 0));
-//
-//    }
+    @Test
+    public void testSeatAvailiblity(){
+        String src="BPL";
+        String dest="NDLS";
+        String date="22-10-2015";
+        String classs="SL";
+        String quota="GN";
+        String train="12001";
+
+        List<Availiblity> availiblities = APICall.getAvailiblity(train,src,dest,date,classs,quota);
+
+        assertTrue((availiblities != null && availiblities.size() > 0));
+
+    }
 //
 //    @Test
 //    public void testTrainBetweenStation(){
-//        String src="NDLS";
-//        String dest="CNB";
+//        String src="MAS";
+//        String dest="SC";
 //        String date="22-10-2015";
 //
-//        List<Train> trains = apiCall.getTrainsBetweenStation(src, dest, date);
+//        List<Train> trains = APICall.getTrainsBetweenStation(src, dest, date);
 //
 //        assertTrue( trains!=null && trains.size()>0 );
 ////        System.out.println(trains);
@@ -53,7 +53,7 @@ public class APICallTest extends TestCase {
 //    public void testTrainRoute(){
 //        String train="12511";
 //
-//        TrainRoute trainRoute = apiCall.getTrainRoute(train);
+//        TrainRoute trainRoute = APICall.getTrainRoute(train);
 //
 //        assertEquals(trainRoute.getRoute().size(), 61);
 //    }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="country_arrays" >
+        <item>SL</item>
+        <item>3A</item>
+        <item>2A</item>
+        <item>1A</item>
+        <item>2S</item>
+        <item>CC</item>
+        <item>EC</item>
+    </string-array>
+</resources>

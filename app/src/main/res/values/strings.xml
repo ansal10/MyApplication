@@ -8,5 +8,6 @@
     <string name="title_activity_display_message">My Message</string>
     <string name="title_activity_train_between_stations">TrainBetweenStations</string>
     <string name="search">Search</string>
+    <string name="country_prompt">Select Class</string>
 
 </resources>
