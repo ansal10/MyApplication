@@ -18,6 +18,7 @@ import org.common.api.requests.mapper.trainbetweenstations.Classes;
 import org.common.api.requests.mapper.trainbetweenstations.Day;
 import org.common.api.requests.mapper.trainbetweenstations.Train;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainBetweenStations extends Activity implements View.OnClickListener{
@@ -60,39 +61,53 @@ public class TrainBetweenStations extends Activity implements View.OnClickListen
         switch (v.getId()){
             case R.id.searchTrainBetweenStaions:
 
-                LinearLayout hiddedLayout = (LinearLayout)findViewById(R.id.hiddenLayout);
-                if(hiddedLayout==null){
+                View viewById = findViewById(R.id.trainBetweenStationHiddenLayout);
+                RelativeLayout hiddedLayout = (RelativeLayout) viewById;
+                {
+                    if(hiddedLayout!=null)
+                        ((ViewGroup)hiddedLayout.getParent()).removeView(viewById);
 
-                    String sourceStationCode = ((TextView) findViewById(R.id.sourceStationCode)).getText().toString();
-                    String destinatonStationCode = ((TextView) findViewById(R.id.destinatonStationCode)).getText().toString();
-                    String date = ((TextView) findViewById(R.id.dayCode)).getText().toString();
+                    final String sourceStationCode = ((TextView) findViewById(R.id.sourceStationCode)).getText().toString();
+                    final String destinatonStationCode = ((TextView) findViewById(R.id.destinatonStationCode)).getText().toString();
+                    final String date = ((TextView) findViewById(R.id.dayCode)).getText().toString();
 
                     if(NotNullNotEmpty(sourceStationCode, destinatonStationCode, date)) {
 
-                        List<Train> trains = MockAPICall.getTrainsBetweenStation(sourceStationCode, destinatonStationCode, date);
+                        final List<Train> trains = new ArrayList<>();
+
+                        Thread t = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                trains.addAll(APICall.getTrainsBetweenStation(sourceStationCode, destinatonStationCode, date));
+                            }
+                        });
+                        t.start();
+                        try {
+                            t.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         if(trains!=null )
 
                             for(Train train : trains) {
 
                                 String trainNameNumber = train.getName()+ " / "+train.getNumber();
-                                String classes =" SL AC 3A";
+                                String arrivalDeparture ="";
                                 String daysviews="";
 
-//                                for(Classes clas : train.getClasses()){
-//                                    classes = classes+clas.getClassCode()+" ";
-//                                }
                                 for(Day day : train.getDays()){
                                     if(day.getRuns().equals("Y"))
                                         daysviews = daysviews+day.getDayCode().charAt(0)+" ";
                                     else
-                                        daysviews = daysviews+"X ";
+                                        daysviews = daysviews+"x ";
                                 }
+                                arrivalDeparture = "Src "+train.getSrcDepartureTime()+" Dest "+train.getDestArrivalTime();
 
                                 LinearLayout myLayout = (LinearLayout) findViewById(R.id.linearLayout2);
                                 View hiddenInfo = getLayoutInflater().inflate(R.layout.train_between_stations, myLayout, false);
                                 View view = hiddenInfo.findViewById(R.id.trainBetweenStationHiddenLayout);
                                 ((TextView) view.findViewById(R.id.trainNameNumber)).setText( trainNameNumber );
-                                ((TextView) view.findViewById(R.id.classView)).setText( classes );
+                                ((TextView) view.findViewById(R.id.arrivalDepartureView)).setText( arrivalDeparture );
                                 ((TextView) view.findViewById(R.id.daysView)).setText( daysviews );
                                 myLayout.addView(hiddenInfo);
                                 numOfViews++;

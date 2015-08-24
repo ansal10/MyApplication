@@ -1,5 +1,7 @@
 package org.common.api;
 
+import android.util.Log;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,8 +12,10 @@ import org.common.api.requests.mapper.trainbetweenstations.Train;
 import org.common.api.requests.mapper.trainbetweenstations.TrainBetweenStations;
 import org.common.api.requests.mapper.trainroute.TrainRoute;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -45,23 +49,38 @@ public class APICall {
 
     public static int calls=0;
 
-    public static String HTTPCall(String urlString){
+    public static String HTTPCall(String urlString) {
+
 
         if(!canCall())
             return "{ responseCode : 403 }";
 
+        InputStream is = null;
+        URL url = null;
+        HttpURLConnection conn = null;
         try {
-            URL url = new URL(urlString);
-            URLConnection conn = url.openConnection();
-            InputStream is = conn.getInputStream();
+            url = new URL(urlString);
+            conn = (HttpURLConnection) url.openConnection();
+            is = new BufferedInputStream(conn.getInputStream());
             String response = IOUtils.toString(is);
             System.out.println(url);
             System.out.println(response);
             calls++;
             return response;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return "{ responseCode : 403 }";
+        }catch (Throwable t){
+            t.printStackTrace();
+            return "{ responseCode : 403 }";
+        }finally {
+            if (is!=null)
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            is = null;
         }
     }
 
