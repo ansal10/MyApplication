@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/trainBetweenStationHiddenLayout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Train Name/Number"
+        android:id="@+id/trainNameNumber"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Mn Tu Wd Th Fr St Sn"
+        android:id="@+id/daysView"
+        android:layout_below="@+id/trainNameNumber"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="CC SL 3A 2A 1A"
+        android:id="@+id/classView"
+        android:layout_below="@+id/trainNameNumber"
+        android:layout_toEndOf="@+id/daysView"
+        android:layout_marginStart="47dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Check Availiblity"
+        android:id="@+id/availiblityView"
+        android:layout_below="@+id/daysView"
+        android:layout_centerHorizontal="true"
+        android:clickable="true" />
+
+</RelativeLayout>
