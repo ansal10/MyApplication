@@ -1,10 +1,8 @@
 package com.example.amd.myapplication;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,16 +16,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.common.api.APICall;
-import org.common.api.MockAPICall;
 import org.common.api.requests.mapper.seatavailiblity.Availiblity;
-import org.common.api.requests.mapper.trainbetweenstations.Classes;
 import org.common.api.requests.mapper.trainbetweenstations.Day;
 import org.common.api.requests.mapper.trainbetweenstations.Train;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -148,7 +142,7 @@ public class TrainBetweenStations extends Activity implements View.OnClickListen
                             }
                             arrivalDeparture = train.getFrom().getCode() +" " + train.getSrcDepartureTime() +" / "+  train.getTo().getCode()+ " " + train.getDestArrivalTime();
                             LinearLayout myLayout = (LinearLayout) findViewById(R.id.linearLayout2);
-                            View hiddenInfo = getLayoutInflater().inflate(R.layout.train_between_stations, myLayout, false);
+                            View hiddenInfo = getLayoutInflater().inflate(R.layout.hidden_train_between_stations, myLayout, false);
                             View view = hiddenInfo.findViewById(R.id.trainBetweenStationHiddenLayout);
                             view.setId(train.getNumber().intValue());
                             ((TextView) view.findViewById(R.id.trainNameNumber)).setText(trainNameNumber);
