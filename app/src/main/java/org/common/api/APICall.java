@@ -60,10 +60,10 @@ public class APICall {
         HttpURLConnection conn = null;
         try {
             url = new URL(urlString);
-            conn = (HttpURLConnection) url.openConnection();
-            is = new BufferedInputStream(conn.getInputStream());
-            String response = IOUtils.toString(is);
             System.out.println(url);
+            conn = (HttpURLConnection) url.openConnection();
+            is = conn.getInputStream();
+            String response = IOUtils.toString(is);
             System.out.println(response);
             calls++;
             return response;
