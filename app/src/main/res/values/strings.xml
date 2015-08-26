@@ -9,5 +9,6 @@
     <string name="title_activity_train_between_stations">TrainBetweenStations</string>
     <string name="search">Search</string>
     <string name="select_class">Select Class</string>
+    <string name="title_activity_train_running_status">TrainRunningStatus</string>
 
 </resources>

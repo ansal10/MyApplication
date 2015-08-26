@@ -19,6 +19,7 @@ import org.common.api.APICall;
 import org.common.api.requests.mapper.seatavailiblity.Availiblity;
 import org.common.api.requests.mapper.trainbetweenstations.Day;
 import org.common.api.requests.mapper.trainbetweenstations.Train;
+import org.common.utils.UTILS;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,7 +113,7 @@ public class TrainBetweenStations extends Activity implements View.OnClickListen
                 String yearCode = "20"+((TextView) findViewById(R.id.yearCode)).getText().toString();
                 final String date = dayCode+"-"+monthCode+"-"+yearCode;
 
-                if (NotNullNotEmpty(sourceStationCode, destinatonStationCode, date) && isValidDate(date)) {
+                if (UTILS.NotNullNotEmpty(sourceStationCode, destinatonStationCode, date) && UTILS.isValidDate(date, "dd-MM-yy")) {
                     trains.clear();
                     Thread t = new Thread(new Runnable() {
 
@@ -170,31 +171,6 @@ public class TrainBetweenStations extends Activity implements View.OnClickListen
 
         }
     }
-
-    private boolean NotNullNotEmpty(String... params) {
-        for(String p:params){
-            if(p==null || p.trim().equals(""))
-                return false;
-        }
-        return true;
-    }
-
-    public boolean isValidDate(String date){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        simpleDateFormat.setLenient(false);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setLenient(false);
-        try{
-            Date date1 = simpleDateFormat.parse(date);
-            calendar.setTime(date1);
-            calendar.getTime();
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
-
 
     private class HTTPCalls extends AsyncTask<String, Integer, Map<String, String>>{
 

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.amd.myapplication" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +21,19 @@
         <activity
             android:name=".TrainBetweenStations"
             android:label="@string/title_activity_train_between_stations" >
+            android:parentActivityName=".MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.amd.myapplication.MyActivity" />
+        </activity>
+        <activity
+            android:name=".TrainRunningStatusActivity"
+            android:label="@string/title_activity_train_running_status"
+            android:parentActivityName=".MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.amd.myapplication.MyActivity" />
         </activity>
     </application>
-
 
 </manifest>

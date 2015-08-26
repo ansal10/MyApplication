@@ -1,17 +1,13 @@
 package org.common.api;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by amd on 8/23/15.
  */
 import junit.framework.TestCase;
-import org.common.api.requests.mapper.seatavailiblity.Availiblity;
-import org.common.api.requests.mapper.trainbetweenstations.Train;
-import org.common.api.requests.mapper.trainroute.TrainRoute;
-import org.junit.Test;
 
-import java.util.List;
+import org.common.api.requests.mapper.livetrain.TrainRunningStatus;
+        import org.common.api.requests.mapper.trainatstation.TrainsAtStation;
+        import org.junit.Test;
 
 public class APICallTest extends TestCase {
 
@@ -22,20 +18,20 @@ public class APICallTest extends TestCase {
 //
 //    APICall apiCall = new APICall();
 //
-    @Test
-    public void testSeatAvailiblity(){
-        String src="BPL";
-        String dest="NDLS";
-        String date="22-10-2015";
-        String classs="SL";
-        String quota="GN";
-        String train="12001";
-
-        List<Availiblity> availiblities = APICall.getAvailiblity(train,src,dest,date,classs,quota);
-
-        assertTrue((availiblities != null && availiblities.size() > 0));
-
-    }
+//    @Test
+//    public void testSeatAvailiblity(){
+//        String src="BPL";
+//        String dest="NDLS";
+//        String date="22-10-2015";
+//        String classs="SL";
+//        String quota="GN";
+//        String train="12001";
+//
+//        List<Availiblity> availiblities = APICall.getAvailiblity(train,src,dest,date,classs,quota);
+//
+//        assertTrue((availiblities != null && availiblities.size() > 0));
+//
+//    }
 //
 //    @Test
 //    public void testTrainBetweenStation(){
@@ -57,5 +53,22 @@ public class APICallTest extends TestCase {
 //
 //        assertEquals(trainRoute.getRoute().size(), 61);
 //    }
+    @Test
+    public void testTrainAtStaion(){
+        String sourceStation = "CNB";
+        String hoursToSearch = "10";
+
+        TrainsAtStation trainsAtStation = APICall.getTrainsAtStations(sourceStation, hoursToSearch);
+
+        assertTrue( trainsAtStation.getTotal()>0 && trainsAtStation.getTotal()==trainsAtStation.getTrain().size());
+    }
+    @Test
+    public void testLiveTrainStatus(){
+        String train="12512";
+        String dayOfJourney = "20150826";
+        TrainRunningStatus trainRunningStatus = APICall.getLiveTrainStatus(train, dayOfJourney);
+
+        assertTrue(trainRunningStatus.getError()!=null && trainRunningStatus.getTotal()==60 && trainRunningStatus.getRoute().size()==60 );
+    }
 
 }
