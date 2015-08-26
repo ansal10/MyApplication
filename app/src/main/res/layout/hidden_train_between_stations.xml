@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/trainBetweenStationHiddenLayout"
+    android:background="#68ff69">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Train Name/Number"
+        android:id="@+id/trainNameNumber"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/trainNameNumber"
+        android:id="@+id/runsAndArrivalDeparture"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Days"
+            android:id="@+id/daysView"
+            android:layout_below="@+id/trainNameNumber"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1.5"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="timmings"
+            android:id="@+id/arrivalDepartureView"
+            android:layout_below="@+id/trainNameNumber"
+            android:layout_toRightOf="@+id/daysView"
+            android:layout_weight="1.5" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Check Availiblity"
+        android:id="@+id/availiblityView"
+        android:layout_below="@+id/runsAndArrivalDeparture"
+        android:layout_centerHorizontal="true"
+        android:clickable="true" />
+
+</RelativeLayout>

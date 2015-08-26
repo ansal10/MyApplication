@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/allAvailableTrains"
+        android:weightSum="1">
+
+        <AutoCompleteTextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sourceStationCode"
+            android:layout_weight="1"
+            android:hint="Src">
+            <requestFocus/>
+        </AutoCompleteTextView>
+
+        <AutoCompleteTextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/destinationStationCode"
+            android:layout_weight="1"
+            android:hint="Dest">
+            <requestFocus/>
+        </AutoCompleteTextView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="4">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2"
+                android:id="@+id/dayCode"
+                android:layout_weight=".33"
+                android:hint="DD"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2"
+                android:id="@+id/monthCode"
+                android:layout_weight=".33"
+                android:hint="MM"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2"
+                android:id="@+id/yearCode"
+                android:layout_weight=".33"
+                android:hint="YY"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:id="@+id/searchTrainBetweenStaions"
+                android:layout_weight="3" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/allAvailableTrains"
+        android:id="@+id/allClassAvailiblity"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="2">
+
+            <Spinner
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:id="@+id/classSelectView"
+                android:entries="@array/class_arrays"
+                android:prompt="@string/select_class"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Get All Availiblity"
+                android:id="@+id/allTrainAvailiblity" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/pbDefault"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/allAvailableTrains"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:visibility="invisible"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/allClassAvailiblity">
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
