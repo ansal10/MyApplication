@@ -17,14 +17,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Train Routes"
-        android:id="@+id/trainRoutesActivity"
+        android:text="Train Running Status"
+        android:id="@+id/trainRunningStatus"
         android:layout_below="@+id/trainBetweenStationActivity"
         android:layout_marginTop="36dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:clickable="true"
-        android:onClick="trainRoutesClick" />
+        android:onClick="trainRunningStatus" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:text="Seat Availiblity"
         android:id="@+id/seatAvailiblityActivity"
         android:layout_marginTop="35dp"
-        android:layout_below="@+id/trainRoutesActivity"
+        android:layout_below="@+id/trainRunningStatus"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:clickable="true"
